@@ -1,16 +1,20 @@
 import {HomePage} from "./Pages/HomePage"
 import { CheckoutPage } from "./Pages/CheckoutPage"
+import { OrdersPage } from "./Pages/ordersPage"
+import {TrackingPage} from "./Pages/TrackingPage"
 import { Routes , Route} from "react-router"
+
 
 import './App.css'
 
-function App() {
+function App() { 
   return (
     <>
     <Routes>
       <Route path="/" element = {<HomePage />} />
-      <Route path="/checkout" element = {<CheckoutPage/>}/>
-      
+      <Route path="checkout" element = {<CheckoutPage/>}/>
+      <Route path="orders" element = {<OrdersPage/>}/>
+      <Route path="tracking" element = {<TrackingPage/>} />
     </Routes>
 
     </>
