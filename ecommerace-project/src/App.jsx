@@ -1,13 +1,18 @@
 import {HomePage} from "./Pages/HomePage"
+import { CheckoutPage } from "./Pages/CheckoutPage"
+import { Routes , Route} from "react-router"
+
 import './App.css'
 
 function App() {
-
-
   return (
     <>
-<HomePage />
-  
+    <Routes>
+      <Route path="/" element = {<HomePage />} />
+      <Route path="/checkout" element = {<CheckoutPage/>}/>
+      
+    </Routes>
+
     </>
   )
 }
