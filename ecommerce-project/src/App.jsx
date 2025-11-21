@@ -1,7 +1,7 @@
-import {HomePage} from "./Pages/HomePage"
-import { CheckoutPage } from "./Pages/CheckoutPage"
-import { OrdersPage } from "./Pages/ordersPage"
-import {TrackingPage} from "./Pages/TrackingPage"
+import {HomePage} from "./pages/HomePage"
+import { CheckoutPage } from "./pages/CheckoutPage"
+import { OrdersPage } from "./pages/ordersPage"
+import {TrackingPage} from "./pages/TrackingPage"
 import { Routes , Route} from "react-router"
 
 
