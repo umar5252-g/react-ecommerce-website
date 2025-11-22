@@ -1,12 +1,12 @@
-import './Components/Components'
-import './App.css'
+import { LoginForm } from "./components/LoginForm.jsx";
+import "./App.css";
 
- function App() {
-        return (
-          <>
-            <p className="title">Hello, welcome to my website</p>
-            <LoginForm />
-          </>
-        );
-      }
-export default App
+function App() {
+  return (
+    <>
+      <p className="title">Hello, welcome to my website</p>
+      <LoginForm />
+    </>
+  );
+}
+export default App;
