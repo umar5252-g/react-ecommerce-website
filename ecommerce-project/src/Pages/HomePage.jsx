@@ -1,4 +1,4 @@
-import { formatCurrency } from "../utils/money";
+import { formatMoney } from "../utils/money";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -48,7 +48,7 @@ export function HomePage({ cart }) {
                 </div>
 
                 <div className="product-price">
-                  {formatCurrency(product.priceCents)}
+                  {formatMoney(product.priceCents)}
                 </div>
 
                 <div className="product-quantity-container">
