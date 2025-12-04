@@ -1,12 +1,11 @@
 import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
 
-export function DeliveryOptions(cartItem, deliveryOptions) {
+export function DeliveryOptions({ cartItem, deliveryOptions }) {
   return (
     <div className="delivery-options">
       <div className="delivery-options-title">Choose a delivery option:</div>
-
-      {deliveryOptions > 0 &&
+      {deliveryOptions.length > 0 &&
         deliveryOptions.map((deliveryOption) => {
           let priceString = "FREE Shipping";
 
