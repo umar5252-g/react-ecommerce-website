@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import dayjs from "dayjs";
+import { Link } from "react-router";
 import { formatMoney } from "../../utils/money";
 
 import "./orderspage.css";
 import { Header } from "../../components/Header";
-import { Link } from "react-router";
+import { OrdersGrid } from "./OrdersGrid";
+
 export function OrdersPage({ cart }) {
   const [orders, setOrders] = useState(null);
 
@@ -78,50 +80,7 @@ export function OrdersPage({ cart }) {
                       <div>{order.id}</div>
                     </div>
                   </div>
-
-                  <div className="order-details-grid">
-                    {order.products.map((orderProduct) => {
-                      return (
-                        <Fragment>
-                          <div className="product-image-container">
-                            <img src={orderProduct.product.image} />
-                          </div>
-
-                          <div className="product-details">
-                            <div className="product-name">
-                              {orderProduct.product.name}
-                            </div>
-                            <div className="product-delivery-date">
-                              Arriving on:{" "}
-                              {dayjs(
-                                orderProduct.estimatedDeliveryTimeMs
-                              ).format("MMMM D")}
-                            </div>
-                            <div className="product-quantity">
-                              Quantity: {orderProduct.quantity}
-                            </div>
-                            <button className="buy-again-button button-primary">
-                              <img
-                                className="buy-again-icon"
-                                src="images/icons/buy-again.png"
-                              />
-                              <span className="buy-again-message">
-                                Add to Cart
-                              </span>
-                            </button>
-                          </div>
-
-                          <div className="product-actions">
-                            <Link to="/tracking">
-                              <button className="track-package-button button-secondary">
-                                Track package
-                              </button>
-                            </Link>
-                          </div>
-                        </Fragment>
-                      );
-                    })}
-                  </div>
+                  <OrdersGrid order={order} />
                 </div>
               );
             })}
