@@ -43,10 +43,8 @@ export function TrackingPage({ cart }) {
           </Link>
 
           <div className="delivery-date">
-            Arriving on Monday,{" "}
-            {dayjs(orderProduct.estimatedDeliveryTimeMs).format(
-              "dddd , MMMM D"
-            )}
+            Arriving on{" "}
+            {dayjs(orderProduct.estimatedDeliveryTimeMs).format("dddd, MMMM D")}
           </div>
 
           <div className="product-info">{orderProduct.product.name}</div>
