@@ -2,9 +2,10 @@ import { useParams } from "react-router";
 import axios from "axios";
 import dayjs from "dayjs";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
+
 import "./TrackingPage.css";
 import { Header } from "../components/Header";
-import { useEffect, useState } from "react";
 
 export function TrackingPage({ cart }) {
   const { orderId, productId } = useParams();
@@ -28,6 +29,16 @@ export function TrackingPage({ cart }) {
   const orderProduct = order.products.find((orderProduct) => {
     return orderProduct.productId === productId;
   });
+
+  const totalDeliveryTimeMs =
+    orderProduct.estimatedDeliveryTimeMs - order.orderTimeMs;
+
+  const timePassedMs = totalDeliveryTimeMs * 0.3;
+
+  let deliveryPercent = (timePassedMs / totalDeliveryTimeMs) * 100;
+  if (deliveryPercent > 100) {
+    deliveryPercent = 100;
+  }
 
   return (
     <>
@@ -60,7 +71,10 @@ export function TrackingPage({ cart }) {
           </div>
 
           <div className="progress-bar-container">
-            <div className="progress-bar"></div>
+            <div
+              className="progress-bar"
+              style={{ width: `${deliveryPercent}%` }}
+            ></div>
           </div>
         </div>
       </div>
