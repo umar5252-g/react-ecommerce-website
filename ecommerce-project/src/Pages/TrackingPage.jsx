@@ -25,14 +25,16 @@ export function TrackingPage({ cart }) {
   if (!order) {
     return null;
   }
+  if (!order?.products) return null;
 
-  const orderProduct = order.products.find((orderProduct) => {
-    return orderProduct.productId === productId;
-  });
+  const orderProduct = order.products.find(
+    (p) => String(p.productId) === productId
+  );
 
   const totalDeliveryTimeMs =
     orderProduct.estimatedDeliveryTimeMs - order.orderTimeMs;
 
+  if (!orderProduct) return <div>Product not found in this order</div>;
   const timePassedMs = totalDeliveryTimeMs * 0.3;
 
   let deliveryPercent = (timePassedMs / totalDeliveryTimeMs) * 100;
@@ -54,8 +56,12 @@ export function TrackingPage({ cart }) {
           </Link>
 
           <div className="delivery-date">
-            Arriving on{" "}
-            {dayjs(orderProduct.estimatedDeliveryTimeMs).format("dddd, MMMM D")}
+            {deliveryPercent >= 100 ? "Delivered on " : "Arriving on "}
+            {orderProduct.estimatedDeliveryTimeMs
+              ? dayjs(orderProduct.estimatedDeliveryTimeMs).format(
+                  "dddd , MMMM D"
+                )
+              : "Delivery date unknown"}
           </div>
 
           <div className="product-info">{orderProduct.product.name}</div>
