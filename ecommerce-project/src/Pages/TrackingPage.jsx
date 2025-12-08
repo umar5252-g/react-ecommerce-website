@@ -35,12 +35,15 @@ export function TrackingPage({ cart }) {
     orderProduct.estimatedDeliveryTimeMs - order.orderTimeMs;
 
   if (!orderProduct) return <div>Product not found in this order</div>;
-  const timePassedMs = totalDeliveryTimeMs * 0.3;
+  const timePassedMs = dayjs().valueOf() - order.orderTimeMs;
 
   let deliveryPercent = (timePassedMs / totalDeliveryTimeMs) * 100;
   if (deliveryPercent > 100) {
     deliveryPercent = 100;
   }
+  const isPreparing = deliveryPercent < 33;
+  const isShipped = deliveryPercent >= 33 && deliveryPercent < 100;
+  const isDeliverd = deliveryPercent === 100;
 
   return (
     <>
@@ -71,9 +74,17 @@ export function TrackingPage({ cart }) {
           <img className="product-image" src={orderProduct.product.image} />
 
           <div className="progress-labels-container">
-            <div className="progress-label">Preparing</div>
-            <div className="progress-label current-status">Shipped</div>
-            <div className="progress-label">Delivered</div>
+            <div
+              className={`progress-label ${isPreparing && "current-status"}`}
+            >
+              Preparing
+            </div>
+            <div className={`progress-label ${isShipped && "current-status"}`}>
+              Shipped
+            </div>
+            <div className={`progress-label ${isDeliverd && "current-status"}`}>
+              Delivered
+            </div>
           </div>
 
           <div className="progress-bar-container">
