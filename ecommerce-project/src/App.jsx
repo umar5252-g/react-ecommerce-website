@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router";
 import "./App.css";
 
 function App() {
+  window.axios = axios;
   const [cart, setCart] = useState([]);
   const loadCart = async () => {
     const response = await axios.get("/api/cart-items?expand=product");
