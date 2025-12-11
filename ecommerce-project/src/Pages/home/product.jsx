@@ -5,6 +5,7 @@ import CheckmarkIcon from "../../assets/images/icons/checkmark.png";
 
 export function Product({ product, loadCart }) {
   const [quantity, setQuantity] = useState(1);
+
   const addToCart = async () => {
     await axios.post("/api/cart-items", {
       productId: product.id,
