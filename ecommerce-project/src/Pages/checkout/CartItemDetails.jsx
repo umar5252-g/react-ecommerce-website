@@ -42,6 +42,15 @@ export function CartItemDetails({ cartItem, loadCart }) {
                 onChange={(event) => {
                   setQuantity(event.target.value);
                 }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    updateQuantity();
+                  }
+                  if (event.key === "Escape") {
+                    setQuantity(cartItem.quantity);
+                    setisUpdateQuantity(false);
+                  }
+                }}
               />
             ) : (
               <span className="quantity-label">{cartItem.quantity}</span>
