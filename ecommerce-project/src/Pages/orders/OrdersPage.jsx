@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
 
 import "./orderspage.css";
 import { Header } from "../../components/Header";
