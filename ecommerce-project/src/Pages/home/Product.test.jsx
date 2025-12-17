@@ -55,4 +55,9 @@ describe("Product componet", () => {
     });
     expect(loadCart).toHaveBeenCalled();
   });
+
+  it("Select a quantity ", () => {
+    render(<Product product={product} loadCart={loadCart} />);
+    expect(screen.getByTestId("product-quantity-selector")).toHaveValue("1");
+  });
 });
