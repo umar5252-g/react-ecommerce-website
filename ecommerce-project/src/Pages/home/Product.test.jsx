@@ -8,6 +8,7 @@ vi.mock("axios");
 describe("Product componet", () => {
   let product;
   let loadCart;
+  let user;
 
   beforeEach(() => {
     product = {
@@ -22,6 +23,8 @@ describe("Product componet", () => {
       keywords: ["socks", "sports", "apparel"],
     };
     loadCart = vi.fn();
+
+    user = userEvent.setup();
   });
 
   it("display the Product details  correctly", () => {
@@ -43,7 +46,7 @@ describe("Product componet", () => {
 
   it("add a product to the cart", async () => {
     render(<Product product={product} loadCart={loadCart} />);
-    const user = userEvent.setup();
+
     const addToCartButton = screen.getByTestId("add-to-cart-button");
     await user.click(addToCartButton);
     expect(axios.post).toHaveBeenCalledWith("/api/cart-items", {
@@ -57,7 +60,7 @@ describe("Product componet", () => {
     render(<Product product={product} loadCart={loadCart} />);
     const quantitySelector = screen.getByTestId("product-quantity-selector");
     expect(quantitySelector).toHaveValue("1");
-    const user = userEvent.setup();
+
     await user.selectOptions(quantitySelector, "3");
     expect(quantitySelector).toHaveValue("3");
     const addToCartButton = screen.getByTestId("add-to-cart-button");
