@@ -85,7 +85,6 @@ describe("homepage components", () => {
     );
 
     await user.click(addToCartButton1);
-
     await user.click(addToCartButton2);
 
     expect(axios.post).toHaveBeenNthCalledWith(1, "/api/cart-items", {

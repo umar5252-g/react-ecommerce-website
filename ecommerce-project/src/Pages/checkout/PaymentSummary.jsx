@@ -13,35 +13,38 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
     <div className="payment-summary">
       <div className="payment-summary-title">Payment Summary</div>
 
-      <div className="payment-summary-row">
+      <div className="payment-summary-row" data-testid="productCost">
         <div>Items ({paymentSummary.totalItems}):</div>
         <div className="payment-summary-money">
           {formatMoney(paymentSummary.productCostCents)}
         </div>
       </div>
 
-      <div className="payment-summary-row">
+      <div className="payment-summary-row" data-testid="shippingCost">
         <div>Shipping &amp; handling:</div>
         <div className="payment-summary-money">
           {formatMoney(paymentSummary.shippingCostCents)}
         </div>
       </div>
 
-      <div className="payment-summary-row subtotal-row">
+      <div
+        className="payment-summary-row subtotal-row"
+        data-testid="totalCostBeforeTax"
+      >
         <div>Total before tax:</div>
         <div className="payment-summary-money">
           {formatMoney(paymentSummary.totalCostBeforeTaxCents)}
         </div>
       </div>
 
-      <div className="payment-summary-row">
+      <div className="payment-summary-row" data-testid="tax">
         <div>Estimated tax (10%):</div>
         <div className="payment-summary-money">
           {formatMoney(paymentSummary.taxCents)}
         </div>
       </div>
 
-      <div className="payment-summary-row total-row">
+      <div className="payment-summary-row total-row" data-testid="totalCost">
         <div>Order total:</div>
         <div className="payment-summary-money">
           {formatMoney(paymentSummary.totalCostCents)}
