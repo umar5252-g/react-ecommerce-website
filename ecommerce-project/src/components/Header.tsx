@@ -28,7 +28,7 @@ export function Header({ cart }: HeaderProps) {
     totalQuantity += cartItem.quantity;
   });
 
-  const updateSearchInput = (event) => {
+  const updateSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
 
