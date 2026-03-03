@@ -1,4 +1,4 @@
-import { DeliveryOptions } from "./DeliveryOptions.jsx";
+import { DeliveryOptions } from "./deliveryOptions.jsx";
 import { CartItemDetails } from "./CartItemDetails.jsx";
 import { DeliveryDate } from "./DeliveryDate.jsx";
 export function OrderSummary({ cart, deliveryOptions, loadCart }) {
